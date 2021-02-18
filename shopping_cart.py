@@ -59,6 +59,15 @@ while True:
 # INFO DISPLAY / OUTPUT 
 # 
 
+print("---------------------------------")
+print("VILLA MARKET GROCERIES")
+print("WWW.VILLA-MARKET-GROCERIES.COM")
+print("------------------------------")
+
+print("CHECKOUT AT:", now.strftime("%Y-%m-%d %H:%M:%S"))
+print("------------------------------")
+
+
 #print(selected_ids)
 for selected_id in selected_ids: 
     matching_products = [i for i in products if str(i["id"]) == str(selected_id)]
@@ -77,17 +86,12 @@ tax = subtotal * 0.0875
 
 print("TAX:", (to_usd(tax)))
 
+total_price = tax + subtotal 
+print("TOTAL:", to_usd(total_price))
+
 #
 # OUR RECEIPT 
 #
-
-print("---------------------------------")
-print("VILLA MARKET GROCERIES")
-print("WWW.VILLA-MARKET-GROCERIES.COM")
-print("------------------------------")
-
-print("CHECKOUT AT:", now.strftime("%Y-%m-%d %H:%M:%S"))
-print("------------------------------")
 
 
 #> SELECTED PRODUCTS:

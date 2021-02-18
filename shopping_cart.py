@@ -34,19 +34,10 @@ products = [
     {"id":20, "name": "Pomegranate Cranberry & Aloe Vera Enrich Drink", "department": "beverages", "aisle": "juice nectars", "price": 4.25}
 ] # based on data from Instacart: https://www.instacart.com/datasets/grocery-shopping-2017
 
+# converting to USD 
 
 def to_usd(my_price):
-    """
-    Converts a numeric value to usd-formatted string, for printing and display purposes.
-
-    Param: my_price (int or float) like 4000.444444
-
-    Example: to_usd(4000.444444)
-
-    Returns: $4,000.44
-    """
     return f"${my_price:,.2f}" #> $12,000.71
-
 
 #
 # INFO CAPTURE 
@@ -74,9 +65,8 @@ for selected_id in selected_ids:
     total_price = total_price + matching_product["price"]
     print("SELECTED PRODUCT:", matching_product["name"], matching_product["price"])
 
-print("TOTAL PRICE:", total_price)
-#format as USD 
 
+print("TOTAL PRICE:", to_usd(total_price))
 
 
 
@@ -108,4 +98,4 @@ print("TOTAL PRICE:", total_price)
 
 #> ---------------------------------
 #> THANKS, SEE YOU AGAIN SOON!
-#> ---------------------------------
+#> --------------------------------

@@ -34,7 +34,8 @@ products = [
     {"id":20, "name": "Pomegranate Cranberry & Aloe Vera Enrich Drink", "department": "beverages", "aisle": "juice nectars", "price": 4.25}
 ] # based on data from Instacart: https://www.instacart.com/datasets/grocery-shopping-2017
 
-# converting to USD 
+from datetime import datetime
+now = datetime.now()
 
 def to_usd(my_price):
     return f"${my_price:,.2f}" #> $12,000.71
@@ -68,16 +69,17 @@ for selected_id in selected_ids:
 
 print("TOTAL PRICE:", to_usd(total_price))
 
+#
+# OUR RECEIPT 
+#
 
+print("---------------------------------")
+print("VILLA MARKET GROCERIES")
+print("WWW.VILLA-MARKET-GROCERIES.COM")
+print("------------------------------")
 
-#> ---------------------------------
-#> GREEN FOODS GROCERY
-#> WWW.GREEN-FOODS-GROCERY.COM
-#> ---------------------------------
-
-
-#> CHECKOUT AT: 2020-02-07 03:54 PM
-#> ---------------------------------
+print("CHECKOUT AT:", now.strftime("%Y-%m-%d %H:%M:%S"))
+print("------------------------------")
 
 
 

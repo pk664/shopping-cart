@@ -45,7 +45,7 @@ def to_usd(my_price):
 #
 
 #must ensure selected ID from the input function and the "id" are same datatype
-total_price = 0
+subtotal = 0
 selected_ids = [] 
 
 while True: 
@@ -63,11 +63,19 @@ while True:
 for selected_id in selected_ids: 
     matching_products = [i for i in products if str(i["id"]) == str(selected_id)]
     matching_product = matching_products[0]
-    total_price = total_price + matching_product["price"]
-    print("SELECTED PRODUCT:", matching_product["name"], matching_product["price"])
+    subtotal = subtotal + matching_product["price"]
+    print("SELECTED PRODUCT:", matching_product["name"], to_usd(matching_product["price"]))
 
+print()
+print("SUBTOTAL:", to_usd(subtotal))
 
-print("TOTAL PRICE:", to_usd(total_price))
+#
+# LET'S FIND TAX 
+# Multiply total cost by NYC sales tax rate of 8.75% 
+
+tax = subtotal * 0.0875
+
+print("TAX:", (to_usd(tax)))
 
 #
 # OUR RECEIPT 
@@ -80,7 +88,6 @@ print("------------------------------")
 
 print("CHECKOUT AT:", now.strftime("%Y-%m-%d %H:%M:%S"))
 print("------------------------------")
-
 
 
 #> SELECTED PRODUCTS:
@@ -97,7 +104,5 @@ print("------------------------------")
 #> TOTAL: $21.17
 
 
-
-#> ---------------------------------
-#> THANKS, SEE YOU AGAIN SOON!
-#> --------------------------------
+print("THANKS, SEE YOU AGAIN SOON!")
+print("--------------------------------")

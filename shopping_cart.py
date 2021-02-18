@@ -67,13 +67,13 @@ print("------------------------------")
 print("CHECKOUT AT:", now.strftime("%Y-%m-%d %H:%M:%S"))
 print("------------------------------")
 
-
+print("SELECTED PRODUCTS:")
 #print(selected_ids)
 for selected_id in selected_ids: 
     matching_products = [i for i in products if str(i["id"]) == str(selected_id)]
     matching_product = matching_products[0]
     subtotal = subtotal + matching_product["price"]
-    print("SELECTED PRODUCT:", matching_product["name"], to_usd(matching_product["price"]))
+    print("+", matching_product["name"], to_usd(matching_product["price"]))
 
 print()
 print("SUBTOTAL:", to_usd(subtotal))
@@ -85,7 +85,6 @@ print("SUBTOTAL:", to_usd(subtotal))
 tax = subtotal * 0.0875
 
 print("TAX:", (to_usd(tax)))
-
 total_price = tax + subtotal 
 print("TOTAL:", to_usd(total_price))
 
@@ -107,6 +106,6 @@ print("TOTAL:", to_usd(total_price))
 #> TAX: $1.70
 #> TOTAL: $21.17
 
-
+print("--------------------------------")
 print("THANKS, SEE YOU AGAIN SOON!")
 print("--------------------------------")

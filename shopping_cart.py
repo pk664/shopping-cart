@@ -60,8 +60,11 @@ selected_id = input("Please input a product identifier:")
 print(selected_id)
 print(type(selected_id))
 
+#must ensure selected ID from the input function and the "id" are the same data type. 
 
-
+matching_products = [i for i in products if str(i["id"]) == str(selected_id)]
+matching_product = matching_products[0]
+print("SELECTED PRODUCT:", matching_product["name"], matching_product["price"])
 
 # 
 # INFO DISPLAY / OUTPUT 

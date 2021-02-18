@@ -36,3 +36,11 @@ pip install -r requirements.txt
 > NOTE: if this command throws an error like "Could not open requirements file: [Errno 2] No such file or directory", make sure you are running it from the repository's root directory, where the requirements.txt file exists (see the initial `cd` step above)
 
 
+## Usage 
+
+Run the program: 
+```sh
+python shopping_cart.py
+```
+
+

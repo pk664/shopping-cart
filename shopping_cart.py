@@ -48,44 +48,36 @@ def to_usd(my_price):
     return f"${my_price:,.2f}" #> $12,000.71
 
 
-# TODO: write some Python code here to produce the desired output
-
-#print(products)
-
 #
 # INFO CAPTURE 
 #
 
 #must ensure selected ID from the input function and the "id" are same datatype
-total_price = 0 
+total_price = 0
+selected_ids = [] 
 
 while True: 
-    selected_id = input("Please input a product identifier:")
+    selected_id = input("Please input a product identifier or DONE if there are no more items:")
     if selected_id == "DONE": 
         break
     else: 
-        matching_products = [i for i in products if str(i["id"]) == str(selected_id)]
-        matching_product = matching_products[0]
-        total_price = total_price + matching_product["price"]
-        print("SELECTED PRODUCT:", matching_product["name"], matching_product["price"])
+        selected_ids.append(selected_id)
 
 # 
 # INFO DISPLAY / OUTPUT 
 # 
 
+#print(selected_ids)
+for selected_id in selected_ids: 
+    matching_products = [i for i in products if str(i["id"]) == str(selected_id)]
+    matching_product = matching_products[0]
+    total_price = total_price + matching_product["price"]
+    print("SELECTED PRODUCT:", matching_product["name"], matching_product["price"])
+
 print("TOTAL PRICE:", total_price)
 #format as USD 
 
-#
-#EXAMPLE OUTPUT
-#
 
-#Please input a product identifier: 1
-#Please input a product identifier: 2
-#Please input a product identifier: 3
-#Please input a product identifier: 2
-#Please input a product identifier: 1
-#Please input a product identifier: DONE
 
 
 #> ---------------------------------

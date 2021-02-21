@@ -1,6 +1,6 @@
 # shopping-cart
 
-A Python application that ... explain app's function. 
+A Python application that allows users to identify their selected grocery items by the items ID. This application adds up product prices, calculates tax, and calculates the total amount due for the grocery items as well as prints out a receipt. 
 
 
 # Prerequisites 

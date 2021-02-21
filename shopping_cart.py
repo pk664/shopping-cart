@@ -45,12 +45,12 @@ selected_ids = []
 
 while True: 
     selected_id = input("Please input a product identifier or DONE if there are no more items:")
-    if selected_id == "DONE": 
-        break  
-    elif selected_id == "done":
-        break  
+    if selected_id == "DONE" or selected_id == "done":
+        break
+    elif int(selected_id) >= 1 and int(selected_id) <= 20:
+        selected_ids.append(int(selected_id))
     else: 
-        selected_ids.append(selected_id)
+        print("Oops, invalid input, please try again!")
 
 # 
 # INFO DISPLAY / OUTPUT 
@@ -70,9 +70,10 @@ print("SELECTED PRODUCTS:")
 
 for selected_id in selected_ids: 
     matching_products = [i for i in products if str(i["id"]) == str(selected_id)]
-    matching_product = matching_products[0]
-    subtotal = subtotal + matching_product["price"]
-    print("+", matching_product["name"], to_usd(matching_product["price"]))
+    if (len(matching_products) != 0):
+        matching_product = matching_products[0]
+        subtotal = subtotal + matching_product["price"]
+        print("+", matching_product["name"], to_usd(matching_product["price"]))
 
 # print an error when an input is not in the range of grocery IDs STILL NEED TO DO THIS 
 

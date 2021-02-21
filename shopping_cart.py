@@ -1,16 +1,5 @@
 # shopping_cart.py
 
-# Requirements 
-
-#grocery store name of your choice
-#grocery store phone number and/or website URL and/or address of choice
-#date and time of the beginning of the checkout process, formatted in a human-friendly way (e.g. 2020-02-07 03:54 PM)
-#name and price of each shopping cart item, price being formatted as US dollars and cents (e.g. $3.50, etc.)
-#total cost of all shopping cart items (i.e. the "subtotal"), formatted as US dollars and cents (e.g. $19.47), calculated as the sum of their prices
-#amount of tax owed (e.g. $1.70), calculated by multiplying the total cost by a New York City sales tax rate of 8.75% (for the purposes of this project, groceries are not exempt from sales tax)
-#total amount owed, formatted as US dollars and cents (e.g. $21.17), calculated by adding together the amount of tax owed plus the total cost of all shopping cart items
-#friendly message thanking the customer and/or encouraging the customer to shop again
-
 products = [
     {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50},
     {"id":2, "name": "All-Seasons Salt", "department": "pantry", "aisle": "spices seasonings", "price": 4.99},
@@ -37,21 +26,29 @@ products = [
 from datetime import datetime
 now = datetime.now()
 
+from dotenv import load_dotenv
+import os 
+
+
 def to_usd(my_price):
-    return f"${my_price:,.2f}" #> $12,000.71
+    return f"${my_price:,.2f}" 
 
 #
 # INFO CAPTURE 
 #
 
-#must ensure selected ID from the input function and the "id" are same datatype
+print("Welcome to Villa Market Groceries!")
+print()
+
 subtotal = 0
 selected_ids = [] 
 
 while True: 
     selected_id = input("Please input a product identifier or DONE if there are no more items:")
     if selected_id == "DONE": 
-        break
+        break  
+    elif selected_id == "done":
+        break  
     else: 
         selected_ids.append(selected_id)
 
@@ -68,12 +65,18 @@ print("CHECKOUT AT:", now.strftime("%Y-%m-%d %H:%M:%S"))
 print("------------------------------")
 
 print("SELECTED PRODUCTS:")
-#print(selected_ids)
+
+# This code was adapted from Prof Rossetti's screencast 
+
 for selected_id in selected_ids: 
     matching_products = [i for i in products if str(i["id"]) == str(selected_id)]
     matching_product = matching_products[0]
     subtotal = subtotal + matching_product["price"]
     print("+", matching_product["name"], to_usd(matching_product["price"]))
+
+# print an error when an input is not in the range of grocery IDs STILL NEED TO DO THIS 
+
+
 
 print()
 print("SUBTOTAL:", to_usd(subtotal))
@@ -88,23 +91,6 @@ print("TAX:", (to_usd(tax)))
 total_price = tax + subtotal 
 print("TOTAL:", to_usd(total_price))
 
-#
-# OUR RECEIPT 
-#
-
-
-#> SELECTED PRODUCTS:
-#>  ... Chocolate Sandwich Cookies ($3.50)
-#>  ... All-Seasons Salt ($4.99)
-#>  ... Robust Golden Unsweetened Oolong Tea ($2.49)
-#>  ... All-Seasons Salt ($4.99)
-#>  ... Chocolate Sandwich Cookies ($3.50)
-#> ---------------------------------
-
-
-#> SUBTOTAL: $19.47
-#> TAX: $1.70
-#> TOTAL: $21.17
 
 print("--------------------------------")
 print("THANKS, SEE YOU AGAIN SOON!")

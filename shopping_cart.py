@@ -27,6 +27,7 @@ from datetime import datetime
 now = datetime.now()
 
 from dotenv import load_dotenv
+load_dotenv()
 import os 
 
 
@@ -38,6 +39,11 @@ def to_usd(my_price):
 #
 
 print("Welcome to Villa Market Groceries!")
+print()
+
+TAX_RATE = os.getenv("TAX_RATE", default = 0.0875)
+
+print(f"Your tax rate is: {TAX_RATE}")
 print()
 
 subtotal = 0
@@ -75,7 +81,10 @@ for selected_id in selected_ids:
         subtotal = subtotal + matching_product["price"]
         print("+", matching_product["name"], to_usd(matching_product["price"]))
 
-# print an error when an input is not in the range of grocery IDs STILL NEED TO DO THIS 
+
+# How to print an error if user inputs something other than done or a number
+# requirements for importing different packages 
+# add about .env and input for tax rate to the readme file 
 
 
 
@@ -86,13 +95,15 @@ print("SUBTOTAL:", to_usd(subtotal))
 # LET'S FIND TAX 
 # Multiply total cost by NYC sales tax rate of 8.75% 
 
-tax = subtotal * 0.0875
 
-print("TAX:", (to_usd(tax)))
-total_price = tax + subtotal 
+tax_amount = float(subtotal) * float(TAX_RATE)
+
+
+print("TAX:", (to_usd(tax_amount)))
+total_price = float(TAX_RATE) + subtotal 
 print("TOTAL:", to_usd(total_price))
 
 
 print("--------------------------------")
-print("THANKS, SEE YOU AGAIN SOON!")
+print("Thanks for visiting! Please come again.")
 print("--------------------------------")

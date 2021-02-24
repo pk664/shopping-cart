@@ -35,6 +35,14 @@ pip install -r requirements.txt
 
 > NOTE: if this command throws an error like "Could not open requirements file: [Errno 2] No such file or directory", make sure you are running it from the repository's root directory, where the requirements.txt file exists (see the initial `cd` step above)
 
+## Tax Rate Setup 
+
+In in the root directory of your local repository, create a new file called ".env", and update the contents of the ".env" file to specify your desired tax rate according to your state's tax rate. For example: 
+
+    TAX_RATE="0.0875"
+
+If no tax rate is specified by the user, then the default tax rate used in the application would be 8.75%. However, if a tax rate is specified by the user, then the tax rate used in the calculation would be the rate specified by the user. 
+
 
 ## Usage 
 

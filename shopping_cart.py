@@ -30,7 +30,6 @@ from dotenv import load_dotenv
 load_dotenv()
 import os 
 
-
 def to_usd(my_price):
     return f"${my_price:,.2f}" 
 
@@ -43,8 +42,7 @@ print()
 
 TAX_RATE = os.getenv("TAX_RATE", default = 0.0875)
 
-print(f"Your tax rate is: {TAX_RATE}")
-print()
+# This code was adapted from Prof Rossetti's screencast 
 
 subtotal = 0
 selected_ids = [] 
@@ -53,10 +51,11 @@ while True:
     selected_id = input("Please input a product identifier or DONE if there are no more items:")
     if selected_id == "DONE" or selected_id == "done":
         break
-    elif int(selected_id) >= 1 and int(selected_id) <= 20:
-        selected_ids.append(int(selected_id))
+    if int(selected_id) >= 1 and int(selected_id) <= 20:
+        selected_ids.append(selected_id)
     else: 
         print("Oops, invalid input, please try again!")
+
 
 # 
 # INFO DISPLAY / OUTPUT 
@@ -72,8 +71,6 @@ print("------------------------------")
 
 print("SELECTED PRODUCTS:")
 
-# This code was adapted from Prof Rossetti's screencast 
-
 for selected_id in selected_ids: 
     matching_products = [i for i in products if str(i["id"]) == str(selected_id)]
     if (len(matching_products) != 0):
@@ -81,29 +78,25 @@ for selected_id in selected_ids:
         subtotal = subtotal + matching_product["price"]
         print("+", matching_product["name"], to_usd(matching_product["price"]))
 
-
-# How to print an error if user inputs something other than done or a number
-# requirements for importing different packages 
-# add about .env and input for tax rate to the readme file 
-
-
+#
+# RECEIPT 
+# 
 
 print()
 print("SUBTOTAL:", to_usd(subtotal))
 
-#
-# LET'S FIND TAX 
-# Multiply total cost by NYC sales tax rate of 8.75% 
+x = str(float(TAX_RATE)*100)
 
-
+print("SELECTED TAX RATE: " + x + "%")
 tax_amount = float(subtotal) * float(TAX_RATE)
 
 
-print("TAX:", (to_usd(tax_amount)))
-total_price = float(TAX_RATE) + subtotal 
+print("TAX AMOUNT:", (to_usd(tax_amount)))
+total_price = tax_amount + subtotal 
+print()
 print("TOTAL:", to_usd(total_price))
 
 
 print("--------------------------------")
-print("Thanks for visiting! Please come again.")
+print("Thanks for visiting Villa! Please come again.")
 print("--------------------------------")

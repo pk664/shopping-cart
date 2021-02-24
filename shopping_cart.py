@@ -54,7 +54,7 @@ while True:
     if int(selected_id) >= 1 and int(selected_id) <= 20:
         selected_ids.append(selected_id)
     else: 
-        print("Oops, invalid input, please try again!")
+        print("Oops, that's an invalid input. Please try again!")
 
 
 # 

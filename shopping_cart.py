@@ -51,7 +51,9 @@ while True:
     selected_id = input("Please input a product identifier or DONE if there are no more items:")
     if selected_id == "DONE" or selected_id == "done":
         break
-    if int(selected_id) >= 1 and int(selected_id) <= 20:
+    elif selected_id.isnumeric() == False: 
+            print("Oops, that's an invalid input. Please try again!")
+    elif int(selected_id) >= 1 and int(selected_id) <= 20:
         selected_ids.append(selected_id)
     else: 
         print("Oops, that's an invalid input. Please try again!")
